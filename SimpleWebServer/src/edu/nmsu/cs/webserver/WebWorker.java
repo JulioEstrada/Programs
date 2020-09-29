@@ -101,6 +101,14 @@ public class WebWorker implements Runnable
 			FileInputStream fis = new FileInputStream(file);
 
 			String mimetype = "text/html";
+			if (file.endsWith(".jpg") || file.endsWith(".jpeg"))
+				mimetype = "image/jpeg";
+			else if (file.endsWith(".png"))
+				mimetype = "image/png";
+			else if (file.endsWith(".gif"))
+				mimetype = "image/gif";
+			else if (file.endsWith(".ico"))
+				mimetype = "image/x-icon";
 
 			writeHTTPHeader(os, mimetype, "200");
 			writeContent(os, file);
